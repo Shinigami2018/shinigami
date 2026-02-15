@@ -6,7 +6,7 @@ export default function Home() {
         <header className="py-12 sm:py-16 lg:py-20">
           <nav className="flex justify-between items-center mb-16">
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
-              Creator
+              Sameen Abrar
             </h1>
             <div className="flex gap-6 text-sm font-medium">
               <a
@@ -33,11 +33,11 @@ export default function Home() {
           {/* Hero Section */}
           <div className="space-y-6">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
-              Welcome to My Portfolio
+              Hi there, I&apos;m Sameen Abrar.
             </h2>
             <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl">
-              I&apos;m a passionate creator and developer. Explore my work and let&apos;s
-              build something amazing together.
+              I&apos;m a passionate creator and developer. Explore my work and
+              let&apos;s build something amazing together.
             </p>
             <div className="flex gap-4 pt-4">
               <a
@@ -57,7 +57,10 @@ export default function Home() {
         </header>
 
         {/* About Section */}
-        <section id="about" className="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section
+          id="about"
+          className="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800"
+        >
           <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
             About
           </h3>
@@ -68,7 +71,10 @@ export default function Home() {
         </section>
 
         {/* Work Section */}
-        <section id="work" className="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section
+          id="work"
+          className="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800"
+        >
           <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">
             Featured Work
           </h3>
@@ -92,13 +98,16 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800">
+        <section
+          id="contact"
+          className="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800"
+        >
           <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
             Get In Touch
           </h3>
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-6 max-w-2xl">
-            I&apos;d love to hear from you. Feel free to reach out for collaboration or just a
-            friendly hello.
+            I&apos;d love to hear from you. Feel free to reach out for
+            collaboration or just a friendly hello.
           </p>
           <div className="flex gap-4">
             <a
