@@ -40,7 +40,7 @@ export function ConnectionStatus() {
             : 'bg-[#00ddaa] shadow-[0_0_8px_rgba(0,221,170,0.6)]'
         }`}
       ></div>
-      <div className="font-mono text-[9px] text-archive-mute uppercase tracking-[0.15em] w-[170px]">
+      <div className="font-mono text-[11px] text-archive-mute uppercase tracking-[0.15em] w-[170px]">
         CONNECTION_SECURE // {fps}FPS
       </div>
     </div>

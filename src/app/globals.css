@@ -81,3 +81,18 @@ body {
   border-bottom: 2px solid var(--color-archive-cyan);
   border-right: 2px solid var(--color-archive-cyan);
 }
+
+/* Professional Glitch Animation */
+@keyframes glitch-anim {
+  0% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 0); opacity: 0.9; filter: blur(0px); }
+  20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, 0); opacity: 1; filter: drop-shadow(0 0 5px var(--color-archive-cyan)); }
+  40% { clip-path: inset(40% 0 50% 0); transform: translate(-1px, 0); opacity: 0.8; filter: blur(1px); }
+  60% { clip-path: inset(80% 0 5% 0); transform: translate(1px, 0); opacity: 1; filter: blur(0px); }
+  80% { clip-path: inset(10% 0 60% 0); transform: translate(-2px, 0); opacity: 0.9; filter: drop-shadow(0 0 5px rgba(255,255,255,0.8)); }
+  100% { clip-path: inset(30% 0 20% 0); transform: translate(0); opacity: 1; filter: blur(0px); }
+}
+
+.glitch-effect {
+  animation: glitch-anim 0.12s linear infinite;
+  text-shadow: 2px 0 var(--color-archive-cyan);
+}

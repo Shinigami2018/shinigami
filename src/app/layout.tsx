@@ -22,6 +22,8 @@ import { TopNav } from "@/components/layout/TopNav";
 import { RightSidebar } from "@/components/layout/RightSidebar";
 import { ConnectionStatus } from "@/components/layout/ConnectionStatus";
 
+import { SidebarProvider } from "@/contexts/SidebarContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,13 +35,15 @@ export default function RootLayout({
       className={`${inter.variable} ${shareTechMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex text-archive-text bg-archive-black scanlines relative">
-        <div className="flex w-full min-h-screen">
-          <div className="flex-1 flex flex-col relative">
-            <TopNav />
-            <main className="flex-1 px-8 lg:px-20 pt-32 pb-16">{children}</main>
+        <SidebarProvider>
+          <div className="flex w-full min-h-screen">
+            <div className="flex-1 flex flex-col relative">
+              <TopNav />
+              <main className="flex-1 px-8 lg:px-20 pt-32 pb-16">{children}</main>
+            </div>
+            <RightSidebar />
           </div>
-          <RightSidebar />
-        </div>
+        </SidebarProvider>
         
         {/* Fixed Connection Status */}
         <ConnectionStatus />

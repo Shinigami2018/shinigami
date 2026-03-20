@@ -3,26 +3,36 @@
 import { useState, useEffect } from "react";
 
 const words = [
-  "ENGINEER.",
-  "ARCHIVIST.",
+  "CS_MAJOR.",
   "DEVELOPER.",
-  "SYSTEMS_ADMIN."
+  "POLYMATH.",
+  "VISIONARY."
 ];
 
 export function HeroText() {
   const [index, setIndex] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [isGlitching, setIsGlitching] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false);
+    // Stop rotation after the array is fully traversed once
+    if (index >= words.length - 1) return;
+
+    const timeout = setTimeout(() => {
+      setIsGlitching(true); // Start glitch transition
+      
+      // Swap the word while rapidly glitching
       setTimeout(() => {
-        setIndex((prev) => (prev + 1) % words.length);
-        setFade(true);
-      }, 400); // Wait for fade out
-    }, 3000); // Change word every 3 seconds
-    return () => clearInterval(interval);
-  }, []);
+        setIndex((prev) => prev + 1);
+        
+        // Finalize glitch and settle on new word
+        setTimeout(() => {
+           setIsGlitching(false);
+        }, 150);
+      }, 200); 
+    }, 2500); // 2.5s display time per word
+
+    return () => clearTimeout(timeout);
+  }, [index]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[140px] md:min-h-[180px] mb-4">
@@ -30,7 +40,7 @@ export function HeroText() {
         MEET THE
       </h1>
       <h2 
-        className={`text-5xl md:text-7xl font-bold tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-archive-cyan to-[#00aaff] italic transition-all duration-400 ease-in-out transform filter drop-shadow-[0_0_20px_rgba(0,240,255,0.3)] ${fade ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'}`}
+        className={`text-5xl md:text-7xl font-bold tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-archive-cyan to-[#00aaff] italic filter drop-shadow-[0_0_20px_rgba(0,240,255,0.3)] ${isGlitching ? 'glitch-effect opacity-80' : 'opacity-100 transition-opacity duration-300'}`}
       >
         {words[index]}
       </h2>

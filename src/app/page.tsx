@@ -7,7 +7,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-12 pb-24 flex flex-col items-center text-center">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-archive-cyan/40 to-transparent"></div>
-        <div className="inline-block px-4 py-1.5 border border-archive-cyan/30 text-archive-cyan font-mono text-[10px] uppercase tracking-[0.2em] mb-10 bg-archive-cyan/5 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+        <div className="inline-block px-4 py-1.5 border border-archive-cyan/30 text-archive-cyan font-mono text-xs uppercase tracking-[0.2em] mb-10 bg-archive-cyan/5 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
           System_Status: Optimized
         </div>
         <HeroText />
@@ -30,7 +30,7 @@ export default function Home() {
            </div>
         </div>
         <div className="md:col-span-8 flex flex-col justify-center">
-           <div className="font-mono text-[10px] text-archive-cyan uppercase tracking-widest mb-4 flex items-center gap-3">
+           <div className="font-mono text-xs text-archive-cyan uppercase tracking-widest mb-4 flex items-center gap-3">
               <div className="h-px w-8 bg-archive-cyan/50"></div>
               ABOUT_ME
            </div>
@@ -78,10 +78,10 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-full h-px bg-archive-border"></div>
           <div className="absolute bottom-0 left-0 w-32 h-[2px] bg-archive-cyan"></div>
           <div>
-             <div className="font-mono text-[10px] text-archive-cyan uppercase tracking-widest mb-2">FEATURED_PROJECTS</div>
+             <div className="font-mono text-xs text-archive-cyan uppercase tracking-widest mb-2">FEATURED_PROJECTS</div>
              <h2 className="text-3xl font-bold uppercase tracking-wide">TECHNICAL_REPOSITORY</h2>
           </div>
-          <Link href="/projects" className="font-mono text-[10px] text-archive-cyan hover:text-white transition-colors hidden sm:flex items-center gap-2 tracking-widest uppercase bg-archive-cyan/10 px-4 py-2 border border-archive-cyan/30">
+          <Link href="/projects" className="font-mono text-xs text-archive-cyan hover:text-white transition-colors hidden sm:flex items-center gap-2 tracking-widest uppercase bg-archive-cyan/10 px-4 py-2 border border-archive-cyan/30">
             EXPLORE_FULL_CATALOG <span className="text-lg leading-none">→</span>
           </Link>
         </div>
@@ -89,21 +89,21 @@ export default function Home() {
            {/* Card 1 */}
            <div className="group border border-archive-border hover:border-archive-cyan/60 transition-all bg-[#0a0e14] flex flex-col h-full relative glow-border glow-border-tl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
               <div className="h-64 bg-archive-black relative overflow-hidden border-b border-archive-border">
-                 <div className="absolute top-4 left-4 z-10 bg-black/60 px-2 py-1 border border-archive-cyan/40 font-mono text-[9px] text-archive-cyan backdrop-blur-md">DESIGN_MOCKUP</div>
+                 <div className="absolute top-4 left-4 z-10 bg-black/60 px-2 py-1 border border-archive-cyan/40 font-mono text-[11px] text-archive-cyan backdrop-blur-md">DESIGN_MOCKUP</div>
                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-70 mix-blend-screen"></div>
               </div>
               <div className="p-6 flex-1 flex flex-col relative">
                  <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold uppercase tracking-wide text-white group-hover:text-archive-cyan transition-colors">ARES_TELEMETRY_V4</h3>
-                    <span className="font-mono text-[10px] text-archive-mute mt-1 border border-archive-border px-1.5 py-0.5">2024.03</span>
+                    <span className="font-mono text-xs text-archive-mute mt-1 border border-archive-border px-1.5 py-0.5">2024.03</span>
                  </div>
                  <p className="text-sm text-archive-mute mb-8 flex-1 leading-relaxed">
                    High-latency telemetry dashboard designed for planetary rovers, prioritizing data integrity across interplanetary distances.
                  </p>
                  <div className="flex gap-3 mt-auto">
-                    <span className="bg-archive-cyan/10 border border-archive-cyan/30 px-2 py-1 text-[9px] font-mono text-archive-text uppercase">REACT</span>
-                    <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[9px] font-mono text-archive-mute uppercase">GRAPHQL</span>
-                    <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[9px] font-mono text-archive-mute uppercase">THREE.JS</span>
+                    <span className="bg-archive-cyan/10 border border-archive-cyan/30 px-2 py-1 text-[11px] font-mono text-archive-text uppercase">REACT</span>
+                    <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">GRAPHQL</span>
+                    <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">THREE.JS</span>
                  </div>
               </div>
            </div>
@@ -111,7 +111,7 @@ export default function Home() {
            {/* Card 2 */}
            <div className="group border border-archive-border hover:border-archive-cyan/60 transition-all bg-[#0a0e14] flex flex-col h-full relative glow-border glow-border-tl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
               <div className="h-64 bg-archive-black relative overflow-hidden border-b border-archive-border">
-                 <div className="absolute top-4 left-4 z-10 bg-archive-cyan/20 px-2 py-1 border border-archive-cyan/40 font-mono text-[9px] text-archive-cyan backdrop-blur-md">PRODUCTION_READY</div>
+                 <div className="absolute top-4 left-4 z-10 bg-archive-cyan/20 px-2 py-1 border border-archive-cyan/40 font-mono text-[11px] text-archive-cyan backdrop-blur-md">PRODUCTION_READY</div>
                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-70 mix-blend-screen"></div>
                  <div className="absolute bottom-4 right-4 w-12 h-12 border-2 border-archive-cyan rounded-full flex items-center justify-center bg-black/50 backdrop-blur-md scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
                     <span className="text-archive-cyan leading-none font-bold">→</span>
@@ -120,15 +120,15 @@ export default function Home() {
               <div className="p-6 flex-1 flex flex-col relative">
                  <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold uppercase tracking-wide text-white group-hover:text-archive-cyan transition-colors">NEURAL_SENTINEL_AI</h3>
-                    <span className="font-mono text-[10px] text-archive-mute mt-1 border border-archive-border px-1.5 py-0.5">2023.11</span>
+                    <span className="font-mono text-xs text-archive-mute mt-1 border border-archive-border px-1.5 py-0.5">2023.11</span>
                  </div>
                  <p className="text-sm text-archive-mute mb-8 flex-1 leading-relaxed">
                    Real-time heuristic packet analysis tool for identifying network threats using transformer-based models. Automated mitigation protocols.
                  </p>
                  <div className="flex gap-3 mt-auto">
-                    <span className="bg-archive-cyan/10 border border-archive-cyan/30 px-2 py-1 text-[9px] font-mono text-archive-text uppercase">RUST</span>
-                    <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[9px] font-mono text-archive-mute uppercase">PYTORCH</span>
-                    <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[9px] font-mono text-archive-mute uppercase">ONNX</span>
+                    <span className="bg-archive-cyan/10 border border-archive-cyan/30 px-2 py-1 text-[11px] font-mono text-archive-text uppercase">RUST</span>
+                    <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">PYTORCH</span>
+                    <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">ONNX</span>
                  </div>
               </div>
            </div>
@@ -138,7 +138,7 @@ export default function Home() {
       {/* Milestones */}
       <section className="mb-8">
         <div className="text-center mb-12">
-           <div className="font-mono text-[10px] text-archive-cyan uppercase tracking-widest mb-2">PROFESSIONAL_ACHIEVEMENTS</div>
+           <div className="font-mono text-xs text-archive-cyan uppercase tracking-widest mb-2">PROFESSIONAL_ACHIEVEMENTS</div>
            <h2 className="text-3xl font-bold uppercase tracking-wide">NOTABLE_MILESTONES</h2>
         </div>
         
@@ -154,12 +154,12 @@ export default function Home() {
                    <div className="font-mono text-4xl md:text-5xl text-archive-border group-hover:text-archive-cyan/20 transition-colors font-bold ml-2">{item.id}</div>
                    <div>
                       <h3 className="text-base md:text-lg font-bold tracking-wide text-white">{item.title}</h3>
-                      <div className="font-mono text-[9px] md:text-[10px] text-archive-mute mt-1">{item.subtitle}</div>
+                      <div className="font-mono text-[11px] md:text-xs text-archive-mute mt-1">{item.subtitle}</div>
                    </div>
                 </div>
                 <div className="flex items-center gap-2 px-3 py-1.5 bg-archive-cyan/5 border border-archive-cyan/20 self-start sm:self-auto">
                    <div className="w-1.5 h-1.5 rounded-full bg-archive-cyan shadow-[0_0_8px_#00f0ff] animate-pulse"></div>
-                   <span className="font-mono text-[9px] text-archive-cyan uppercase tracking-widest">Verified_Credential</span>
+                   <span className="font-mono text-[11px] text-archive-cyan uppercase tracking-widest">Verified_Credential</span>
                 </div>
              </div>
            ))}
@@ -170,14 +170,14 @@ export default function Home() {
       <footer className="pt-16 pb-8 border-t border-archive-border flex flex-col items-center justify-center text-center mt-8 relative">
          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-archive-cyan"></div>
          <div className="font-mono text-archive-cyan font-bold tracking-[0.3em] text-sm mb-8">THE_NEURAL_ARCHIVE</div>
-         <div className="flex flex-wrap justify-center gap-6 md:gap-10 font-mono text-[10px] text-archive-mute mb-8 tracking-widest uppercase">
+         <div className="flex flex-wrap justify-center gap-6 md:gap-10 font-mono text-xs text-archive-mute mb-8 tracking-widest uppercase">
             <Link href="#" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">GITHUB</Link>
             <Link href="#" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">LINKEDIN</Link>
             <Link href="#" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">YOUTUBE</Link>
             <Link href="#" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">TWITTER</Link>
             <Link href="#" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">CONTACT</Link>
          </div>
-         <div className="font-mono text-[8px] text-archive-mute/50 tracking-[0.2em]">
+         <div className="font-mono text-[10px] text-archive-mute/50 tracking-[0.2em]">
             © 2024 THE_NEURAL_ARCHIVE // ENGINEER_CONSOLE_V2.0
          </div>
       </footer>
