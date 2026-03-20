@@ -21,6 +21,8 @@ export const metadata: Metadata = {
 import { TopNav } from "@/components/layout/TopNav";
 import { RightSidebar } from "@/components/layout/RightSidebar";
 import { ConnectionStatus } from "@/components/layout/ConnectionStatus";
+import { LoadingScreen } from "@/components/layout/LoadingScreen";
+import { DynamicBackground } from "@/components/layout/DynamicBackground";
 
 import { SidebarProvider } from "@/contexts/SidebarContext";
 
@@ -34,7 +36,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${shareTechMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex text-archive-text bg-archive-black scanlines relative">
+      <body className="min-h-full flex text-archive-text bg-transparent scanlines relative">
+        <DynamicBackground />
+        <LoadingScreen />
         <SidebarProvider>
           <div className="flex w-full min-h-screen">
             <div className="flex-1 flex flex-col relative">

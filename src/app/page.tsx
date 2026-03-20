@@ -1,25 +1,28 @@
 import Link from 'next/link';
 import { HeroText } from '@/components/home/HeroText';
+import { InitiateDiveButton } from '@/components/home/InitiateDiveButton';
 
 export default function Home() {
   return (
     <div className="flex flex-col gap-24 font-sans animate-in fade-in duration-1000">
       {/* Hero Section */}
-      <section className="relative pt-12 pb-24 flex flex-col items-center text-center">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-archive-cyan/40 to-transparent"></div>
-        <div className="inline-block px-4 py-1.5 border border-archive-cyan/30 text-archive-cyan font-mono text-xs uppercase tracking-[0.2em] mb-10 bg-archive-cyan/5 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+      <section className="relative flex flex-col items-center justify-center text-center min-h-[calc(100vh-10rem)] pb-12">
+        <div className="inline-block px-4 py-1.5 border border-archive-cyan/30 text-archive-cyan font-mono text-xs uppercase tracking-[0.2em] mb-8 bg-archive-cyan/5 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
           System_Status: Optimized
         </div>
         <HeroText />
-        <p className="max-w-2xl text-archive-mute text-sm md:text-base leading-relaxed mt-6 font-mono tracking-wide">
+        <p className="max-w-2xl text-archive-mute text-base md:text-lg leading-relaxed mt-8 font-mono tracking-wide">
           Archiving technical achievements, visual sequences, and architectural logic.
           <br/>
           Engineering professional digital artifacts with systems-level precision.
         </p>
+        
+        {/* INITIATE DIVE */}
+        <InitiateDiveButton />
       </section>
 
       {/* About Me Section */}
-      <section className="grid grid-cols-1 md:grid-cols-12 gap-12 bg-[#0a0f16]/60 -mx-8 lg:-mx-20 px-8 lg:px-20 py-16 border-y border-archive-border backdrop-blur-sm relative">
+      <section id="about" className="scroll-mt-32 grid grid-cols-1 md:grid-cols-12 gap-12 bg-[#0a0f16]/60 -mx-8 lg:-mx-20 px-8 lg:px-20 py-16 border-y border-archive-border backdrop-blur-sm relative mt-8 md:mt-0">
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-archive-cyan/50 to-transparent"></div>
         <div className="md:col-span-4 relative group">
            <div className="aspect-square bg-archive-border relative overflow-hidden border border-archive-cyan/30 p-1">

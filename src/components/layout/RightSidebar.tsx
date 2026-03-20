@@ -94,19 +94,42 @@ export function RightSidebar() {
           {/* Live feed */}
           <div className="space-y-4">
             <div className="font-mono text-xs text-archive-mute uppercase tracking-widest border-b border-archive-border/50 pb-2">Live_Feed</div>
-            <div className="space-y-6 relative before:absolute before:left-2 before:top-2 before:bottom-0 before:w-px before:bg-archive-border">
-              {/* Thread item */}
-              <div className="relative pl-6">
-                 <div className="absolute left-[7px] top-1.5 w-1.5 h-1.5 bg-archive-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></div>
-                 <div className="font-mono text-[11px] text-archive-mute tracking-wider">NOW_PLAYING</div>
-                 <div className="text-xs text-archive-text font-mono mt-1 glow-border glow-border-tl p-2 bg-archive-gray border border-archive-cyan/20">DEEP_CORE_LOGS_04</div>
+            
+            <div className="space-y-5 pt-2">
+              {/* Item 1 */}
+              <div className="flex items-center gap-4 group cursor-pointer transition-transform hover:-translate-y-0.5">
+                 <div className="w-12 h-12 rounded-md bg-archive-black flex items-center justify-center shrink-0 border border-archive-cyan/10 shadow-[0_0_15px_rgba(0,240,255,0.05)] group-hover:border-archive-cyan/40 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all relative overflow-hidden">
+                    <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-archive-cyan/50"></div>
+                    <svg className="text-archive-cyan" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 12.09l-2.06-8.24A2 2 0 0 0 17.58 2H6.42a2 2 0 0 0-1.94 1.85l-2.06 8.24A4 4 0 0 0 6.3 16.5l1.62-1.62h8.16l1.62 1.62a4 4 0 0 0 3.88-4.41zM8 10H6V8h2v2zm7-1.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+                 </div>
+                 <div className="flex flex-col">
+                    <span className="font-mono text-[10px] text-archive-mute uppercase tracking-widest mb-0.5">CURRENTLY_FOLLOWING</span>
+                    <span className="font-mono text-xs text-archive-text tracking-wide group-hover:text-archive-cyan transition-colors">STARFIELD_EXPANSION_DEV</span>
+                 </div>
               </div>
-              {/* Thread item */}
-              <div className="relative pl-6">
-                 <div className="absolute left-[7px] top-1.5 w-1.5 h-1.5 bg-archive-mute opacity-50"></div>
-                 <div className="font-mono text-[11px] text-archive-mute uppercase tracking-wider">New upload detected</div>
-                 <div className="text-[11px] text-archive-mute font-sans mt-1">NEURAL_LINK_V5.RAW</div>
-                 <div className="font-mono text-[10px] text-archive-mute/40 mt-1">14:22:01</div>
+
+              {/* Item 2 */}
+              <div className="flex items-center gap-4 group cursor-pointer transition-transform hover:-translate-y-0.5">
+                 <div className="w-12 h-12 rounded-md bg-archive-black flex items-center justify-center shrink-0 border border-archive-cyan/10 shadow-[0_0_15px_rgba(0,240,255,0.05)] group-hover:border-archive-cyan/40 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all relative overflow-hidden">
+                    <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-archive-cyan/50"></div>
+                    <svg className="text-archive-cyan" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                 </div>
+                 <div className="flex flex-col">
+                    <span className="font-mono text-[10px] text-archive-mute uppercase tracking-widest mb-0.5">TECH_STACK_UPDATE</span>
+                    <span className="font-mono text-xs text-archive-text tracking-wide group-hover:text-archive-cyan transition-colors">RUST_FOR_KERNEL_DEV</span>
+                 </div>
+              </div>
+
+              {/* Item 3 */}
+              <div className="flex items-center gap-4 group cursor-pointer transition-transform hover:-translate-y-0.5">
+                 <div className="w-12 h-12 rounded-md bg-archive-black flex items-center justify-center shrink-0 border border-archive-cyan/10 shadow-[0_0_15px_rgba(0,240,255,0.05)] group-hover:border-archive-cyan/40 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all relative overflow-hidden">
+                    <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-archive-cyan/50"></div>
+                    <svg className="text-archive-cyan" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="10" width="4" height="10" rx="1"></rect><rect x="10" y="4" width="4" height="16" rx="1"></rect><rect x="16" y="14" width="4" height="6" rx="1"></rect></svg>
+                 </div>
+                 <div className="flex flex-col">
+                    <span className="font-mono text-[10px] text-archive-mute uppercase tracking-widest mb-0.5">MONITORING_STATUS</span>
+                    <span className="font-mono text-xs text-archive-text tracking-wide group-hover:text-archive-cyan transition-colors">LOCAL_SERVER_OPTIMAL</span>
+                 </div>
               </div>
             </div>
           </div>
