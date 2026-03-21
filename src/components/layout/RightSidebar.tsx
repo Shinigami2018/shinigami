@@ -1,12 +1,75 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSidebar } from "@/contexts/SidebarContext";
+
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+
+function DecodedText({ original, target, trigger }: { original: string; target: string; trigger: boolean }) {
+  const [text, setText] = useState(original);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    let iteration = 0;
+    const finalString = trigger ? target : original;
+    
+    clearInterval(intervalRef.current as NodeJS.Timeout);
+    
+    intervalRef.current = setInterval(() => {
+      setText(() => {
+        return finalString
+          .split("")
+          .map((letter, index) => {
+            if (letter === " ") return " ";
+            if (index < iteration) {
+              return finalString[index];
+            }
+            return CHARS[Math.floor(Math.random() * CHARS.length)];
+          })
+          .join("");
+      });
+      
+      if (iteration >= finalString.length) {
+        clearInterval(intervalRef.current as NodeJS.Timeout);
+      }
+      
+      iteration += 1 / 3;
+    }, 30);
+    
+    return () => clearInterval(intervalRef.current as NodeJS.Timeout);
+  }, [trigger, original, target]);
+
+  return (
+    <div 
+      className={`font-mono text-[13px] font-bold tracking-wider transition-all duration-300 ${
+        trigger 
+          ? "text-black [text-shadow:0_0_8px_rgba(255,255,255,1),0_0_15px_rgba(255,255,255,0.6)]" 
+          : "text-archive-cyan"
+      }`}
+    >
+      {text}
+    </div>
+  );
+}
 
 export function RightSidebar() {
   const { isOpen, setIsOpen } = useSidebar();
   const [cpuLoad, setCpuLoad] = useState(34.2);
   const [syncFreq, setSyncFreq] = useState(120.0);
+  const [isHoveringProfile, setIsHoveringProfile] = useState(false);
+  const [isOpeningSequence, setIsOpeningSequence] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsOpeningSequence(true);
+      const timer = setTimeout(() => {
+        setIsOpeningSequence(false);
+      }, 3000); // Hold the decoded name for 3 seconds then revert
+      return () => clearTimeout(timer);
+    } else {
+      setIsOpeningSequence(false);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -45,12 +108,16 @@ export function RightSidebar() {
         className={`fixed right-0 top-0 bottom-0 w-80 border-l border-archive-border flex flex-col bg-archive-black z-50 transition-transform duration-300 ease-in-out shadow-[-10px_0_30px_rgba(0,0,0,0.8)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         {/* User profile */}
-        <div className="h-24 px-6 flex flex-row items-center gap-4 border-b border-archive-border shrink-0">
-          <div className="w-10 h-10 bg-archive-border flex items-center justify-center border border-archive-cyan/30 overflow-hidden relative glow-border glow-border-tl">
-            <div className="absolute inset-0 bg-[url('https://api.dicebear.com/7.x/bottts/svg?seed=Archivist01&backgroundColor=0d131a')] bg-cover opacity-80 mix-blend-screen"></div>
+        <div 
+          className="h-24 px-6 flex flex-row items-center gap-4 border-b border-archive-border shrink-0 cursor-pointer group hover:bg-archive-cyan/5 transition-colors"
+          onMouseEnter={() => setIsHoveringProfile(true)}
+          onMouseLeave={() => setIsHoveringProfile(false)}
+        >
+          <div className="w-10 h-10 bg-archive-border flex items-center justify-center border border-archive-cyan/30 overflow-hidden relative glow-border glow-border-tl group-hover:border-archive-cyan transition-colors">
+            <div className="absolute inset-0 bg-[url('https://api.dicebear.com/7.x/bottts/svg?seed=Archivist01&backgroundColor=0d131a')] bg-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity"></div>
           </div>
           <div>
-            <div className="font-mono text-xs font-bold text-archive-cyan tracking-wider">SHINIGAMI_2018</div>
+            <DecodedText original="SHINIGAMI_2018" target="SAMEEN ABRAR" trigger={isHoveringProfile || isOpeningSequence} />
             <div className="font-mono text-xs text-green-400/80 mt-0.5 flex items-center gap-1.5">
                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
                STATUS: ONLINE
