@@ -13,7 +13,7 @@ export function TopNav() {
     { name: 'PROJECTS', href: '/projects' },
     { name: 'GALLERY', href: '/gallery' },
     { name: 'BLOG', href: '/blog' },
-    { name: 'YOUTUBE', href: '#' }
+    { name: 'ABOUT ME', href: '/about' }
   ];
 
   return (
