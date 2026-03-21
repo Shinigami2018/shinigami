@@ -12,9 +12,9 @@ export default function Home() {
             </div>
             <HeroText />
             <p className="max-w-2xl text-archive-mute text-base md:text-lg leading-relaxed mt-8 font-mono tracking-wide">
-               Archiving technical achievements, visual sequences, and architectural logic.
+               CSE Undergraduate at Military Institute of Science & Technology.
                <br />
-               Engineering professional digital artifacts with systems-level precision.
+               Specializing in Software Engineering, Open-Source Intelligence, and Aerospace Robotics.
             </p>
 
             {/* INITIATE DIVE */}
@@ -26,7 +26,7 @@ export default function Home() {
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-archive-cyan/50 to-transparent"></div>
             <div className="md:col-span-4 relative group">
                <div className="aspect-square bg-archive-border relative overflow-hidden border border-archive-cyan/30 p-1">
-                  <div 
+                  <div
                      className="absolute inset-1 bg-cover bg-center opacity-60 grayscale contrast-125 group-hover:opacity-100 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700"
                      style={{ backgroundImage: "url('/about_me.jpg')" }}
                   ></div>
@@ -40,39 +40,39 @@ export default function Home() {
                   <div className="h-px w-8 bg-archive-cyan/50"></div>
                   ABOUT_ME
                </div>
-               <h2 className="text-3xl font-bold mb-10 uppercase tracking-wide leading-tight">Engineering the Interface Between<br /><span className="text-archive-cyan/80">Systems and Visuals</span></h2>
+               <h2 className="text-3xl font-bold mb-10 uppercase tracking-wide leading-tight">Engineering the Interface Between<br /><span className="text-archive-cyan/80">Software and Hardware Systems</span></h2>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="p-5 border border-archive-border bg-archive-black/50 hover:bg-archive-gray/80 transition-all hover:border-archive-cyan/40 group relative overflow-hidden">
                      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-archive-cyan/0 group-hover:bg-archive-cyan transition-colors"></div>
                      <div className="font-mono text-xs text-archive-cyan mb-3 flex items-center gap-2 tracking-wider">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
-                        SYSTEMS_ADMIN
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        SECURITY_INTELLIGENCE
                      </div>
-                     <p className="text-xs text-archive-mute leading-relaxed font-mono">Identifying vulnerabilities and implementing robust cryptographic solutions.</p>
+                     <p className="text-sm text-archive-mute leading-relaxed font-mono"><span className="text-white font-semibold">OSINT Instructor</span> & Problem Setter at <span className="text-white font-semibold">MIST Cyber Security Club</span>. Designing educational <span className="text-white font-semibold">cyber-attack exercises</span> and threat paradigms.</p>
                   </div>
                   <div className="p-5 border border-archive-border bg-archive-black/50 hover:bg-archive-gray/80 transition-all hover:border-archive-cyan/40 group relative overflow-hidden">
                      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-archive-cyan/0 group-hover:bg-archive-cyan transition-colors"></div>
                      <div className="font-mono text-xs text-archive-cyan mb-3 flex items-center gap-2 tracking-wider">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                        VISUAL_ENGINEERING
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5-4 5-4l3 3"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 4-5 4-5l-3-3"></path></svg>
+                        SPACE_ROBOTICS
                      </div>
-                     <p className="text-xs text-archive-mute leading-relaxed font-mono">Producing high-fidelity visual documentation and digital media sequences.</p>
+                     <p className="text-sm text-archive-mute leading-relaxed font-mono"><span className="text-white font-semibold">Communication Subteam Lead</span> for <span className="text-white font-semibold">MIST Mars Rover Society</span>. Focusing on seamless <span className="text-white font-semibold">long distance communication</span> between the rover and the base station.</p>
                   </div>
                   <div className="p-5 border border-archive-border bg-archive-black/50 hover:bg-archive-gray/80 transition-all hover:border-archive-cyan/40 group relative overflow-hidden">
                      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-archive-cyan/0 group-hover:bg-archive-cyan transition-colors"></div>
                      <div className="font-mono text-xs text-archive-cyan mb-3 flex items-center gap-2 tracking-wider">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
                         COMPUTER_SCIENCE
                      </div>
-                     <p className="text-xs text-archive-mute leading-relaxed font-mono">Specializing in systems-level programming and algorithm complexity.</p>
+                     <p className="text-sm text-archive-mute leading-relaxed font-mono"><span className="text-white font-semibold">CSE Undergraduate</span> at MIST. Specializing in <span className="text-white font-semibold">low-level hardware</span>, <span className="text-white font-semibold">systems architecture</span>, <span className="text-white font-semibold">operating systems</span>, and <span className="text-white font-semibold">networking</span>.</p>
                   </div>
                   <div className="p-5 border border-archive-border bg-archive-black/50 hover:bg-archive-gray/80 transition-all hover:border-archive-cyan/40 group relative overflow-hidden">
                      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-archive-cyan/0 group-hover:bg-archive-cyan transition-colors"></div>
                      <div className="font-mono text-xs text-archive-cyan mb-3 flex items-center gap-2 tracking-wider">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                        AEROSPACE_SYSTEMS
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        SOFTWARE_ENGINEERING
                      </div>
-                     <p className="text-xs text-archive-mute leading-relaxed font-mono">Developing telemetry interfaces for extraterrestrial exploration variables.</p>
+                     <p className="text-sm text-archive-mute leading-relaxed font-mono">Building highly <span className="text-white font-semibold">scalable architectures</span> using <span className="text-white font-semibold">Node.js</span>, <span className="text-white font-semibold">React</span>, and <span className="text-white font-semibold">MySQL</span>. Experienced in <span className="text-white font-semibold">REST API development</span> and <span className="text-white font-semibold">relational databases</span>.</p>
                   </div>
                </div>
             </div>
