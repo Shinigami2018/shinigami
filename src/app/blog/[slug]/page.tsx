@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: Props) {
       <header className="mb-12 border-b border-archive-border pb-10">
         <div className="font-mono text-xs text-archive-cyan uppercase tracking-widest mb-4 flex items-center gap-3">
           <div className="h-px w-12 bg-archive-cyan/50"></div>
-          NEURAL_ARCHIVE // PUBLICATION
+          THE_VAULT // PUBLICATION
         </div>
 
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight uppercase leading-tight mb-6">

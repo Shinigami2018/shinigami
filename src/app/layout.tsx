@@ -14,8 +14,8 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "THE_NEURAL_ARCHIVE",
-  description: "Archiving technical achievements and visual sequences. Engineering professional digital artifacts.",
+  title: "THE_VAULT",
+  description: "A curated vault of technical projects, publications, and visual content by Sameen.",
 };
 
 import { TopNav } from "@/components/layout/TopNav";
@@ -23,6 +23,7 @@ import { RightSidebar } from "@/components/layout/RightSidebar";
 import { ConnectionStatus } from "@/components/layout/ConnectionStatus";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { DynamicBackground } from "@/components/layout/DynamicBackground";
+import { Footer } from "@/components/layout/Footer";
 
 import { SidebarProvider } from "@/contexts/SidebarContext";
 
@@ -44,6 +45,7 @@ export default function RootLayout({
             <div className="flex-1 flex flex-col relative">
               <TopNav />
               <main className="flex-1 px-8 lg:px-20 pt-32 pb-16">{children}</main>
+              <Footer />
             </div>
             <RightSidebar />
           </div>

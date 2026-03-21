@@ -69,16 +69,16 @@ export default async function Blog() {
               >
                 {/* Left meta column */}
                 <div className="md:col-span-3 flex flex-col gap-3">
-                  {/* Cover image thumbnail */}
+                  {/* Cover image thumbnail — clickable */}
                   {post.coverImage?.asset ? (
-                    <div className="hidden md:block h-20 w-full overflow-hidden border border-archive-border group-hover:border-archive-cyan/40 transition-colors relative">
+                    <Link href={`/blog/${post.slug.current}`} className="hidden md:block h-44 w-full overflow-hidden border border-archive-border group-hover:border-archive-cyan/40 transition-colors relative">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={urlFor(post.coverImage).width(200).height(80).fit('crop').url()}
+                        src={urlFor(post.coverImage).width(400).height(176).fit('crop').url()}
                         alt={post.coverImage.alt ?? post.title}
-                        className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                        className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 group-hover:scale-105 transition-transform"
                       />
-                    </div>
+                    </Link>
                   ) : null}
                   <div className="flex flex-col font-mono text-xs mt-1 space-y-1">
                     <span className="text-archive-cyan group-hover:text-white transition-colors">
@@ -98,9 +98,11 @@ export default async function Blog() {
 
                 {/* Right content column */}
                 <div className="md:col-span-9">
-                  <h3 className="text-xl font-bold uppercase tracking-wide mb-3 group-hover:text-archive-cyan transition-colors">
-                    {post.title.replace(/ /g, '_').toUpperCase()}
-                  </h3>
+                  <Link href={`/blog/${post.slug.current}`} className="block">
+                    <h3 className="text-xl font-bold uppercase tracking-wide mb-3 group-hover:text-archive-cyan transition-colors cursor-pointer">
+                      {post.title.replace(/ /g, '_').toUpperCase()}
+                    </h3>
+                  </Link>
                   <p className="text-archive-mute text-sm leading-relaxed mb-4 max-w-3xl">
                     {post.excerpt ?? ''}
                   </p>
