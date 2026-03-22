@@ -9,6 +9,7 @@ export type GalleryMedia = {
   title: string;
   type: MediaType;
   date: string;
+  timestamp: number;
   tag?: string;
   imgUrl: string;
   colSpan?: string;
@@ -52,8 +53,8 @@ export default function GalleryClient({ initialMedia }: { initialMedia: GalleryM
     result.sort((a, b) => {
       // DESCENDING -> Latest first
       return activeSort === "DESCENDING" 
-        ? new Date(b.date).getTime() - new Date(a.date).getTime()
-        : new Date(a.date).getTime() - new Date(b.date).getTime();
+        ? b.timestamp - a.timestamp
+        : a.timestamp - b.timestamp;
     });
     
     return result;
