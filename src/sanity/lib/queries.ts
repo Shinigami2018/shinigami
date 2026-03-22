@@ -88,3 +88,21 @@ export const ALL_STORY_SLUGS_QUERY = defineQuery(`
   }
 `)
 
+// ─── Gallery Queries ─────────────────────────────────────────────────────────
+
+// Fetches all gallery images
+export const ALL_GALLERY_IMAGES_QUERY = defineQuery(`
+  *[_type == "galleryImage" && defined(image.asset)] | order(publishedAt desc) {
+    _id,
+    title,
+    tag,
+    "album": album->title,
+    publishedAt,
+    layoutStyle,
+    image {
+      asset,
+      alt,
+      hotspot
+    }
+  }
+`)

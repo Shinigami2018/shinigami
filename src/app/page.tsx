@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import { HeroText } from '@/components/home/HeroText';
 import { InitiateDiveButton } from '@/components/home/InitiateDiveButton';
+import { fetchGitHubRepos } from '@/lib/github';
 
-export default function Home() {
+export const revalidate = 18000; // 5 hours ISR
+
+export default async function Home() {
+   const repos = await fetchGitHubRepos();
+   const highlightedRepos = repos.slice(0, 2);
+
    return (
       <div className="flex flex-col gap-24 font-sans animate-in fade-in duration-1000">
          {/* Hero Section */}
@@ -14,7 +20,7 @@ export default function Home() {
             <p className="max-w-2xl text-archive-mute text-base md:text-lg leading-relaxed mt-8 font-mono tracking-wide">
                CSE Undergraduate at Military Institute of Science & Technology.
                <br />
-               Specializing in Software Engineering, Open-Source Intelligence, and Aerospace Robotics.
+               Specializing in Software Engineering, Open-Source Intelligence, and Space Robotics.
             </p>
 
             {/* INITIATE DIVE */}
@@ -91,53 +97,45 @@ export default function Home() {
                   EXPLORE_FULL_CATALOG <span className="text-lg leading-none">→</span>
                </Link>
             </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-               {/* Card 1 */}
-               <div className="group border border-archive-border hover:border-archive-cyan/60 transition-all bg-[#0a0e14] flex flex-col h-full relative glow-border glow-border-tl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-                  <div className="h-64 bg-archive-black relative overflow-hidden border-b border-archive-border">
-                     <div className="absolute top-4 left-4 z-10 bg-black/60 px-2 py-1 border border-archive-cyan/40 font-mono text-[11px] text-archive-cyan backdrop-blur-md">DESIGN_MOCKUP</div>
-                     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-70 mix-blend-screen"></div>
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col relative">
-                     <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-bold uppercase tracking-wide text-white group-hover:text-archive-cyan transition-colors">ARES_TELEMETRY_V4</h3>
-                        <span className="font-mono text-xs text-archive-mute mt-1 border border-archive-border px-1.5 py-0.5">2024.03</span>
+               {highlightedRepos.map((repo) => (
+                  <a href={repo.html_url} target="_blank" rel="noopener noreferrer" key={repo.id} className="group border border-archive-border hover:border-archive-cyan/60 transition-all bg-[#0a0e14] p-8 flex flex-col h-full min-h-[280px] relative glow-border glow-border-tl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+                     <div className="flex justify-between items-start mb-6 gap-4 border-b border-archive-border/50 pb-4">
+                        <div className="flex flex-col gap-1">
+                           <h3 className="text-2xl font-bold uppercase tracking-wide text-white group-hover:text-archive-cyan transition-colors line-clamp-1">
+                              {repo.name.replace(/-/g, '_')}
+                           </h3>
+                           <span className="font-mono text-xs text-archive-mute">
+                              UPDATED: {new Date(repo.updated_at).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
+                           </span>
+                        </div>
+                        <div className="font-mono text-[11px] text-archive-cyan bg-archive-cyan/10 border border-archive-cyan/20 px-2 py-1 whitespace-nowrap">
+                           {repo.stargazers_count > 0 ? `${repo.stargazers_count}_STARS` : 'ACTIVE_BUILD'}
+                        </div>
                      </div>
-                     <p className="text-sm text-archive-mute mb-8 flex-1 leading-relaxed">
-                        High-latency telemetry dashboard designed for planetary rovers, prioritizing data integrity across interplanetary distances.
+                     
+                     <p className="text-sm text-archive-mute mb-8 flex-1 leading-relaxed line-clamp-3">
+                        {repo.description || "System logs indicate no detailed description provided for this technical payload."}
                      </p>
-                     <div className="flex gap-3 mt-auto">
-                        <span className="bg-archive-cyan/10 border border-archive-cyan/30 px-2 py-1 text-[11px] font-mono text-archive-text uppercase">REACT</span>
-                        <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">GRAPHQL</span>
-                        <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">THREE.JS</span>
+                     
+                     <div className="flex flex-wrap items-center justify-between gap-4 mt-auto pt-4 border-t border-archive-border/30">
+                        <div className="flex flex-wrap gap-2">
+                           {repo.languages?.slice(0, 3).map(lang => (
+                              <span key={lang} className="bg-archive-cyan/10 border border-archive-cyan/30 px-2 py-1 text-[11px] font-mono text-archive-cyan uppercase">
+                                 {lang}
+                              </span>
+                           ))}
+                           {repo.topics?.slice(0, 2).map(topic => (
+                              <span key={topic} className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">
+                                 {topic}
+                              </span>
+                           ))}
+                        </div>
+                        <span className="text-archive-cyan leading-none font-bold text-xl group-hover:translate-x-1.5 transition-transform">→</span>
                      </div>
-                  </div>
-               </div>
-
-               {/* Card 2 */}
-               <div className="group border border-archive-border hover:border-archive-cyan/60 transition-all bg-[#0a0e14] flex flex-col h-full relative glow-border glow-border-tl shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-                  <div className="h-64 bg-archive-black relative overflow-hidden border-b border-archive-border">
-                     <div className="absolute top-4 left-4 z-10 bg-archive-cyan/20 px-2 py-1 border border-archive-cyan/40 font-mono text-[11px] text-archive-cyan backdrop-blur-md">PRODUCTION_READY</div>
-                     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-70 mix-blend-screen"></div>
-                     <div className="absolute bottom-4 right-4 w-12 h-12 border-2 border-archive-cyan rounded-full flex items-center justify-center bg-black/50 backdrop-blur-md scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
-                        <span className="text-archive-cyan leading-none font-bold">→</span>
-                     </div>
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col relative">
-                     <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-bold uppercase tracking-wide text-white group-hover:text-archive-cyan transition-colors">NEURAL_SENTINEL_AI</h3>
-                        <span className="font-mono text-xs text-archive-mute mt-1 border border-archive-border px-1.5 py-0.5">2023.11</span>
-                     </div>
-                     <p className="text-sm text-archive-mute mb-8 flex-1 leading-relaxed">
-                        Real-time heuristic packet analysis tool for identifying network threats using transformer-based models. Automated mitigation protocols.
-                     </p>
-                     <div className="flex gap-3 mt-auto">
-                        <span className="bg-archive-cyan/10 border border-archive-cyan/30 px-2 py-1 text-[11px] font-mono text-archive-text uppercase">RUST</span>
-                        <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">PYTORCH</span>
-                        <span className="bg-archive-gray border border-archive-border px-2 py-1 text-[11px] font-mono text-archive-mute uppercase">ONNX</span>
-                     </div>
-                  </div>
-               </div>
+                  </a>
+               ))}
             </div>
          </section>
 

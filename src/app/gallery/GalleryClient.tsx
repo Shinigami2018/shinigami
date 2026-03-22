@@ -16,19 +16,26 @@ export type GalleryMedia = {
   extraClasses?: string;
   isCinematic?: boolean;
   videoUrl?: string; // e.g. youtube link
+  album?: string;
 };
 
-const FILTERS = ["ALL_CORES", "VIDEOS", "IMAGES"];
 const SORTS = ["DESCENDING", "ASCENDING"];
 
 export default function GalleryClient({ initialMedia }: { initialMedia: GalleryMedia[] }) {
-  const [filterIdx, setFilterIdx] = useState(0);
+  const [activeFilter, setActiveFilter] = useState("ALL_ASSETS");
   const [sortIdx, setSortIdx] = useState(0);
 
-  const activeFilter = FILTERS[filterIdx];
+  // Auto-generate dynamic filters based on what albums exist
+  const dynamicFilters = useMemo(() => {
+    const albums = new Set<string>();
+    initialMedia.forEach(m => {
+      if (m.album && m.album !== "UNCATEGORIZED") albums.add(m.album.toUpperCase());
+    });
+    return ["ALL_ASSETS", "VIDEOS", "IMAGES", ...Array.from(albums)];
+  }, [initialMedia]);
+
   const activeSort = SORTS[sortIdx];
 
-  const handleFilterClick = () => setFilterIdx((prev) => (prev + 1) % FILTERS.length);
   const handleSortClick = () => setSortIdx((prev) => (prev + 1) % SORTS.length);
 
   const filteredAndSortedMedia = useMemo(() => {
@@ -36,7 +43,10 @@ export default function GalleryClient({ initialMedia }: { initialMedia: GalleryM
     
     // Filter
     if (activeFilter === "VIDEOS") result = result.filter(m => m.type === "VIDEO");
-    if (activeFilter === "IMAGES") result = result.filter(m => m.type === "IMAGE");
+    else if (activeFilter === "IMAGES") result = result.filter(m => m.type === "IMAGE");
+    else if (activeFilter !== "ALL_ASSETS") {
+      result = result.filter(m => m.album?.toUpperCase() === activeFilter);
+    }
     
     // Sort
     result.sort((a, b) => {
@@ -61,13 +71,7 @@ export default function GalleryClient({ initialMedia }: { initialMedia: GalleryM
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight uppercase">VIDEOGRAPHY_&_VISUALS</h1>
         </div>
         
-        <div className="flex gap-4 self-start md:self-auto select-none z-10">
-           <div 
-              onClick={handleFilterClick}
-              className="border border-archive-border bg-archive-gray px-4 py-2 font-mono text-xs text-archive-mute uppercase flex items-center gap-2 cursor-pointer hover:border-archive-cyan/50 hover:text-white transition-colors"
-           >
-              <span className="text-archive-cyan/50">FILTER:</span> {activeFilter}
-           </div>
+        <div className="flex gap-4 self-start md:self-auto select-none z-10 items-end">
            <div 
               onClick={handleSortClick}
               className="border border-archive-cyan/30 bg-archive-gray px-4 py-2 font-mono text-xs text-archive-cyan uppercase flex items-center gap-2 cursor-pointer hover:border-archive-cyan transition-colors shadow-[0_0_10px_rgba(0,240,255,0.05)]"
@@ -77,8 +81,25 @@ export default function GalleryClient({ initialMedia }: { initialMedia: GalleryM
         </div>
       </header>
 
-      {/* Gallery Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+      {/* Dynamic Album Filters */}
+      <div className="flex flex-wrap gap-2 mb-2">
+         {dynamicFilters.map((f) => (
+            <button
+               key={f}
+               onClick={() => setActiveFilter(f)}
+               className={`border px-3 py-1 font-mono text-[10px] uppercase transition-colors ${
+                 activeFilter === f 
+                   ? 'border-archive-cyan bg-archive-cyan/10 text-archive-cyan shadow-[0_0_10px_rgba(0,240,255,0.1)]' 
+                   : 'border-archive-border bg-archive-black/60 text-archive-mute hover:border-archive-cyan/40 hover:text-white'
+               }`}
+            >
+               {f}
+            </button>
+         ))}
+      </div>
+
+      {/* Gallery Masonry Layout */}
+      <section className="columns-1 md:columns-2 lg:columns-3 gap-6 relative">
          <style>{`
            @keyframes popIn {
              from { opacity: 0; transform: scale(0.97) translateY(10px); filter: blur(2px); }
@@ -96,18 +117,20 @@ export default function GalleryClient({ initialMedia }: { initialMedia: GalleryM
                <CardComponent 
                   key={`${item.id}-${activeFilter}-${activeSort}`} 
                   {...cardProps}
-                  className={`${item.colSpan || ''} relative group border border-archive-border bg-archive-black overflow-hidden ${item.aspect || 'aspect-video md:aspect-auto md:h-[300px]'} block hover:border-archive-cyan/40 transition-colors cursor-pointer glow-border glow-border-tl`}
+                  className="relative group border border-archive-border bg-archive-black overflow-hidden block mb-6 break-inside-avoid hover:border-archive-cyan/40 transition-colors cursor-pointer glow-border glow-border-tl"
                   style={{ 
                     animation: 'popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                     animationDelay: `${index * 60}ms`,
                     opacity: 0
                   }}
                >
-                  <div 
-                    className={`absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 ${item.extraClasses || 'opacity-80'}`}
-                    style={{ backgroundImage: `url('${item.imgUrl}')` }}
-                  ></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-archive-black/90 via-archive-black/20 to-transparent"></div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src={item.imgUrl} 
+                    alt={item.title}
+                    className={`w-full h-auto block transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 ${item.extraClasses || 'opacity-80'}`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-archive-black/90 via-archive-black/20 to-transparent pointer-events-none"></div>
                   
                   {item.tag && (
                     <div className="absolute top-4 right-4 bg-archive-black/50 backdrop-blur-md px-2 py-1 border border-archive-cyan/30 text-archive-cyan font-mono text-[11px] flex gap-1.5 items-center">
