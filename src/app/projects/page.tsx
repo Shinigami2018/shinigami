@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import { fetchGitHubRepos, type GitHubRepo } from '@/lib/github';
 
-export default function Projects() {
+export const revalidate = 3600; // Revalidate every hour
+
+export default async function Projects() {
+  const repos = await fetchGitHubRepos('Shinigami2018');
+
   return (
     <div className="flex flex-col gap-16 font-sans animate-in fade-in duration-700">
       {/* Header */}
@@ -66,59 +71,63 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Grid of smaller projects */}
+      {/* ── Dynamic GitHub Projects Grid ─────────────────────────────────── */}
       <section>
         <div className="flex items-center gap-4 mb-8">
            <h2 className="text-xl font-bold uppercase tracking-wide">TECHNICAL_PROJECTS</h2>
            <div className="flex-1 h-px bg-archive-border"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-           {/* Card 1 */}
-           <div className="border border-archive-border bg-archive-black/60 p-6 hover:bg-archive-gray hover:border-archive-cyan/40 transition-all group flex flex-col min-h-[220px]">
-              <div className="flex justify-between items-start mb-6">
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-archive-cyan)" strokeWidth="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                 <span className="font-mono text-[11px] text-archive-mute/50">ID: 081</span>
-              </div>
-              <h3 className="text-lg font-bold uppercase mb-3 group-hover:text-archive-cyan transition-colors">KERNEL_SENTRY</h3>
-              <p className="text-xs text-archive-mute leading-relaxed mb-6 flex-1">Low-level security auditing framework for Unix-based kernels...</p>
-              <div className="flex flex-wrap gap-2">
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">C++</span>
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">CYBERSECURITY</span>
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">LINUX</span>
-              </div>
-           </div>
-           
-           {/* Card 2 */}
-           <div className="border border-archive-border bg-archive-black/60 p-6 hover:bg-archive-gray hover:border-archive-cyan/40 transition-all group flex flex-col min-h-[220px]">
-              <div className="flex justify-between items-start mb-6">
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-archive-cyan)" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                 <span className="font-mono text-[11px] text-archive-mute/50">ID: 104</span>
-              </div>
-              <h3 className="text-lg font-bold uppercase mb-3 group-hover:text-archive-cyan transition-colors">NEURAL_SCRAPER</h3>
-              <p className="text-xs text-archive-mute leading-relaxed mb-6 flex-1">High-frequency data extraction engine optimized for decentralized...</p>
-              <div className="flex flex-wrap gap-2">
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">PYTHON</span>
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">WEB3</span>
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">DATA ENGINEERING</span>
-              </div>
-           </div>
-           
-           {/* Card 3 */}
-           <div className="border border-archive-border bg-archive-black/60 p-6 hover:bg-archive-gray hover:border-archive-cyan/40 transition-all group flex flex-col min-h-[220px]">
-              <div className="flex justify-between items-start mb-6">
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-archive-cyan)" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                 <span className="font-mono text-[11px] text-archive-mute/50">ID: 219</span>
-              </div>
-              <h3 className="text-lg font-bold uppercase mb-3 group-hover:text-archive-cyan transition-colors">CTF_TOOLKIT</h3>
-              <p className="text-xs text-archive-mute leading-relaxed mb-6 flex-1">Automated reverse engineering suite for rapid analysis of binary exploit...</p>
-              <div className="flex flex-wrap gap-2">
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">GO</span>
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">REVERSE ENGINEERING</span>
-                 <span className="font-mono text-[10px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute">INFOSEC</span>
-              </div>
-           </div>
-        </div>
+        {repos.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-20 border border-dashed border-archive-border text-center bg-archive-black/30">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-archive-mute)" strokeWidth="1.5" className="mb-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <p className="font-mono text-xs text-archive-mute uppercase tracking-widest mb-2">NO_REPOSITORIES_FOUND</p>
+            <p className="text-archive-mute text-sm max-w-md">The GitHub API fetch returned zero results. Check your connectivity or API token limits.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+             {repos.map((repo: GitHubRepo) => (
+                <a 
+                  key={repo.id}
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-archive-border bg-archive-black/60 p-6 hover:bg-archive-gray hover:border-archive-cyan/40 transition-all group flex flex-col min-h-[240px] relative glow-border glow-border-br"
+                >
+                  <div className="flex justify-between items-start mb-5">
+                     <span className="font-mono text-[10px] text-archive-mute/60 uppercase tracking-widest flex items-center gap-2">
+                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                       {new Date(repo.updated_at).toLocaleDateString()}
+                     </span>
+                     {repo.stargazers_count > 0 && (
+                        <span className="font-mono text-[10px] text-archive-cyan flex items-center gap-1 bg-archive-cyan/10 px-1.5 py-0.5 border border-archive-cyan/20">
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                          {repo.stargazers_count}
+                        </span>
+                     )}
+                  </div>
+                  <h3 className="text-lg font-bold uppercase mb-3 group-hover:text-archive-cyan transition-colors leading-tight break-words">
+                    {repo.name.replace(/-/g, '_')}
+                  </h3>
+                  <p className="text-xs text-archive-mute leading-relaxed mb-6 flex-1 line-clamp-3">
+                    {repo.description || "No description provided for this technical repository."}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                     {repo.languages?.map(lang => (
+                       <span key={lang} className="font-mono text-[9px] font-bold text-archive-black bg-archive-cyan px-1.5 py-0.5 uppercase tracking-widest">
+                         {lang}
+                       </span>
+                     ))}
+                     {repo.topics?.slice(0, 3).map((topic) => (
+                       <span key={topic} className="font-mono text-[9px] bg-archive-black border border-archive-border px-1.5 py-0.5 text-archive-mute uppercase tracking-widest">
+                         {topic}
+                       </span>
+                     ))}
+                  </div>
+                </a>
+             ))}
+          </div>
+        )}
       </section>
 
       {/* Timeline */}

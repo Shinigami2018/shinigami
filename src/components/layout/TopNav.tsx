@@ -19,7 +19,7 @@ export function TopNav() {
   return (
     <header className="fixed top-0 left-0 right-0 h-24 flex items-center justify-between px-8 lg:px-12 z-40 bg-archive-black/60 backdrop-blur-md border-b border-archive-border/50 shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all">
       <div className="font-mono text-archive-cyan font-bold tracking-widest text-lg md:text-xl drop-shadow-[0_0_10px_rgba(0,240,255,0.2)]">
-        THE_NEURAL_ARCHIVE
+        THE_VAULT
       </div>
       <nav className="hidden md:flex items-center gap-8 font-mono text-xs text-archive-mute">
         {navLinks.map((link) => {
