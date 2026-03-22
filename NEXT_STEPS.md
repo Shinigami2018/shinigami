@@ -36,5 +36,5 @@ Once you have initialized the project and have the Project ID, tell the AI to:
 - [ ] Create the `post.ts` (Blog) schema in the `src/sanity/schemas` directory.
 - [ ] Configure `src/app/studio/[[...index]]/page.tsx` to host the embedded visual Studio dashboard.
 - [ ] Write the GROQ query to fetch dynamic blogs into `src/app/blog/page.tsx`.
-- [ ] Build the GitHub API data fetcher in `src/app/projects/page.tsx`.
-- [ ] Build the YouTube Data API fetcher in `src/app/gallery/page.tsx`.
+- [x] Build the GitHub API data fetcher in `src/app/projects/page.tsx`.
+- [x] Build the YouTube Data API fetcher in `src/app/gallery/page.tsx`.

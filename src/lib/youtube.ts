@@ -90,3 +90,42 @@ export async function fetchLatestVideos(maxResults = 4): Promise<YouTubeVideo[]>
     return []
   }
 }
+
+export async function fetchSpecificVideos(videoIds: string[]): Promise<YouTubeVideo[]> {
+  const apiKey = process.env.YOUTUBE_API_KEY
+
+  if (!apiKey || videoIds.length === 0) return []
+
+  try {
+    // Only fetch up to 50 videos in a single request (API limit)
+    const validIds = videoIds.filter(Boolean).slice(0, 50)
+    
+    const res = await fetch(
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${validIds.join(',')}&key=${apiKey}`,
+      { next: { revalidate: 18000 } }
+    )
+    
+    if (!res.ok) return []
+    
+    const data = await res.json()
+    const items = data.items || []
+
+    return items.map((item: any) => {
+      const videoId = item.id
+      return {
+        id: videoId,
+        title: item.snippet.title,
+        description: item.snippet.description,
+        thumbnail:
+          item.snippet.thumbnails?.maxres?.url ??
+          item.snippet.thumbnails?.high?.url ??
+          item.snippet.thumbnails?.medium?.url ??
+          '',
+        publishedAt: item.snippet.publishedAt,
+        duration: formatDuration(item.contentDetails.duration),
+      }
+    })
+  } catch {
+    return []
+  }
+}
