@@ -34,7 +34,7 @@ Because **Sanity CMS** requires you to authorize the database using your private
 Once you have initialized the project and have the Project ID, tell the AI to:
 - [ ] Install `@portabletext/react` for rendering the rich text.
 - [ ] Create the `post.ts` (Blog) schema in the `src/sanity/schemas` directory.
-- [ ] Configure `src/app/studio/[[...index]]/page.tsx` to host the embedded visual Studio dashboard.
-- [ ] Write the GROQ query to fetch dynamic blogs into `src/app/blog/page.tsx`.
+- [x] Configure `src/app/studio/[[...index]]/page.tsx` to host the embedded visual Studio dashboard.
+- [x] Write the GROQ query to fetch dynamic blogs into `src/app/blog/page.tsx`.
 - [x] Build the GitHub API data fetcher in `src/app/projects/page.tsx`.
 - [x] Build the YouTube Data API fetcher in `src/app/gallery/page.tsx`.
