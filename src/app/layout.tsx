@@ -37,7 +37,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${shareTechMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex text-archive-text bg-transparent scanlines relative">
+      <body suppressHydrationWarning className="min-h-full flex text-archive-text bg-transparent scanlines relative">
         <DynamicBackground />
         <LoadingScreen />
         <SidebarProvider>
