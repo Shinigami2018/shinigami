@@ -8,7 +8,7 @@ export function Footer() {
         <a href="https://www.linkedin.com/in/sameen-abrar" target="_blank" rel="noopener noreferrer" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">LINKEDIN</a>
         <a href="https://www.youtube.com/@samonhunt2018" target="_blank" rel="noopener noreferrer" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">YOUTUBE</a>
         <a href="https://www.instagram.com/apurbo2018/" target="_blank" rel="noopener noreferrer" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">INSTAGRAM</a>
-        <a href="https://mail.google.com/mail/?view=cm&to=sameenpcc2018@gmail.com&su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">CONTACT</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=sameenabrar121@gmail.com&su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" className="hover:text-archive-text hover:underline underline-offset-4 transition-all">CONTACT</a>
       </div>
       <div className="font-mono text-[10px] text-archive-mute/50 tracking-[0.2em]">
         © 2026 THE_VAULT // shinigami
