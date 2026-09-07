@@ -40,12 +40,12 @@ export function HeroText() {
   }, [index]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[140px] md:min-h-[180px] mb-4">
-      <h1 className="text-4xl md:text-5xl font-light tracking-[0.25em] uppercase text-archive-mute mb-2 md:mb-4">
+    <div className="flex flex-col items-center justify-center min-h-[120px] sm:min-h-[140px] md:min-h-[180px] mb-4 w-full">
+      <h1 className="text-2xl sm:text-4xl md:text-5xl font-light tracking-[0.18em] sm:tracking-[0.25em] uppercase text-archive-mute mb-2 md:mb-4 text-center">
         SAMEEN ABRAR
       </h1>
       <h2 
-        className={`text-6xl md:text-8xl font-bold tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-archive-cyan to-[#00aaff] italic filter drop-shadow-[0_0_20px_rgba(0,240,255,0.3)] ${isGlitching ? 'glitch-effect opacity-80' : 'opacity-100 transition-opacity duration-300'}`}
+        className={`text-4xl sm:text-6xl md:text-8xl font-bold tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-archive-cyan to-[#00aaff] italic filter drop-shadow-[0_0_20px_rgba(0,240,255,0.3)] text-center ${isGlitching ? 'glitch-effect opacity-80' : 'opacity-100 transition-opacity duration-300'}`}
       >
         {words[index]}
       </h2>

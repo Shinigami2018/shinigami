@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 };
 
 import { ConnectionStatus } from "@/components/layout/ConnectionStatus";
-import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { DynamicBackground } from "@/components/layout/DynamicBackground";
 import { Footer } from "@/components/layout/Footer";
 
@@ -35,10 +34,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex text-archive-text bg-transparent scanlines relative">
         <DynamicBackground />
-        <LoadingScreen />
         <div className="flex w-full min-h-screen">
           <div className="flex-1 flex flex-col relative">
-            <main className="flex-1 px-8 lg:px-20 py-12 md:py-16">{children}</main>
+            <main className="flex-1 px-4 sm:px-8 lg:px-20 py-8 sm:py-12 md:py-16">{children}</main>
             <Footer />
           </div>
         </div>

@@ -1,5 +1,4 @@
 import { HeroText } from '@/components/home/HeroText';
-import { InitiateDiveButton } from '@/components/home/InitiateDiveButton';
 
 const TRANSMISSION_LINKS = [
   {
@@ -91,18 +90,15 @@ export default function Home() {
           <br />
           Specializing in Software Engineering, Open-Source Intelligence, and Space Robotics.
         </p>
-
-        {/* INITIATE DIVE */}
-        <InitiateDiveButton />
       </section>
 
       {/* About Me Section */}
       <section
         id="about"
-        className="scroll-mt-32 grid grid-cols-1 md:grid-cols-12 gap-12 bg-[#0a0f16]/60 -mx-8 lg:-mx-20 px-8 lg:px-20 py-16 border-y border-archive-border backdrop-blur-sm relative mt-8 md:mt-0"
+        className="scroll-mt-32 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 bg-[#0a0f16]/60 -mx-4 sm:-mx-8 lg:-mx-20 px-4 sm:px-8 lg:px-20 py-12 md:py-16 border-y border-archive-border backdrop-blur-sm relative mt-4 md:mt-0"
       >
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-archive-cyan/50 to-transparent"></div>
-        <div className="md:col-span-4 relative group">
+        <div className="md:col-span-4 relative group max-w-[240px] sm:max-w-xs md:max-w-none mx-auto md:mx-0 w-full">
           <div className="aspect-square bg-archive-border relative overflow-hidden border border-archive-cyan/30 p-1">
             <div
               className="absolute inset-1 bg-cover bg-center opacity-60 grayscale contrast-125 group-hover:opacity-100 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700"
@@ -118,7 +114,7 @@ export default function Home() {
             <div className="h-px w-8 bg-archive-cyan/50"></div>
             ABOUT_ME
           </div>
-          <h2 className="text-3xl font-bold mb-10 uppercase tracking-wide leading-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8 md:mb-10 uppercase tracking-wide leading-tight text-left">
             Engineering the Interface Between
             <br />
             <span className="text-archive-cyan/80">Software and Hardware Systems</span>
