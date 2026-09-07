@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { HeroText } from '@/components/home/HeroText';
+import aboutMePhoto from '../../public/about_me.jpg';
 
 const TRANSMISSION_LINKS = [
   {
@@ -100,13 +102,19 @@ export default function Home() {
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-archive-cyan/50 to-transparent"></div>
         <div className="md:col-span-4 relative group max-w-[240px] sm:max-w-xs md:max-w-none mx-auto md:mx-0 w-full">
           <div className="aspect-square bg-archive-border relative overflow-hidden border border-archive-cyan/30 p-1">
-            <div
-              className="absolute inset-1 bg-cover bg-center opacity-60 grayscale contrast-125 group-hover:opacity-100 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700"
-              style={{ backgroundImage: "url('/about_me.jpg')" }}
-            ></div>
+            <div className="absolute inset-1 overflow-hidden">
+              <Image
+                src={aboutMePhoto}
+                alt="Sameen Abrar"
+                fill
+                priority
+                sizes="(max-width: 768px) 240px, 320px"
+                className="object-cover opacity-60 grayscale contrast-125 group-hover:opacity-100 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700"
+              />
+            </div>
             {/* Corner accents */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-archive-cyan"></div>
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-archive-cyan"></div>
+            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-archive-cyan z-10 pointer-events-none"></div>
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-archive-cyan z-10 pointer-events-none"></div>
           </div>
         </div>
         <div className="md:col-span-8 flex flex-col justify-center">
